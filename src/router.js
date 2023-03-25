@@ -4,5 +4,6 @@ const tasksMiddlewares = require("./middlewares/tasksMiddleware");
 
 routers.get("/tasks", tasksController.getAll);
 routers.post("/tasks", tasksMiddlewares.validateBody, tasksController.post);
+routers.delete("/tasks/:id", tasksController.delete);
 
 module.exports = routers;

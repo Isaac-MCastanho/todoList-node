@@ -5,3 +5,18 @@ exports.findAll = async () => {
 
 	return tasks;
 };
+
+exports.saveTask = async (task) => {
+	const { title } = task;
+
+	const dateUTC = new Date(Date.now()).toUTCString();
+
+	const query = "INSERT INTO tasks VALUES (NULL,?,?,?)";
+	const [createdTask] = await connection.execute(query, [
+		title,
+		"Pendente",
+		dateUTC,
+	]);
+
+	return { insertId: createdTask.insertId };
+};

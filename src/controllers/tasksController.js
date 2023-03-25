@@ -8,3 +8,9 @@ exports.getAll = async (req, res) => {
 
 	return res.status(200).json(data);
 };
+
+exports.post = async (req, res) => {
+	const insert = await tasksModel.saveTask(req.body);
+	console.log(insert);
+	return res.status(201).json(insert);
+};

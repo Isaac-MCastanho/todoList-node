@@ -29,3 +29,13 @@ exports.removeTask = async (id) => {
 
 	return removedTask;
 };
+
+exports.updateTask = async (task) => {
+	const { id, title, status } = task;
+
+	const query = "UPDATE tasks SET title = ?, status = ? WHERE id = ?";
+
+	const [updatedTask] = await connection.execute(query, [title, status, id]);
+
+	return updatedTask;
+};
